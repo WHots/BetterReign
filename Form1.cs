@@ -16,8 +16,8 @@ namespace BetterReign
         /// Targeted file to monitor.
         /// </summary>
         private string TargetFile = string.Empty;
-        private bool ProcessIsRunning = false; 
-
+        private bool ProcessIsRunning = false;
+        
 
         Resources processGeneralInformation = new Resources();
 
@@ -30,6 +30,10 @@ namespace BetterReign
         private void ProcessExited(object sender, System.EventArgs e)
         {
             ProcessIsRunning = false;
+            Task.Run(() =>
+            {
+                MessageBox.Show(Constants.ProcessExitedResponse);
+            });
         }
 
 
@@ -58,7 +62,6 @@ namespace BetterReign
                 return -1;
             }
 
-            
             this.ProcessIsRunning = true;
             return 1;                     
         }
@@ -102,15 +105,23 @@ namespace BetterReign
                 file = openFileDialog.FileName;
                 label_FileDirectory.Text = property.GetWorkingDirectory(file);
                 label_FileSizeMb.Text = property.GetFileSize(file);
+                label_FileSignature.Text = property.GetMd5Hash(file);
             }
 
             ProcessIsRunning = false;
 
-            if (!string.IsNullOrEmpty(file))
+            if (!string.IsNullOrEmpty(value: file))
             {
-                StartProcess(file);
-            }
-            
+                int startprocess = StartProcess(file:file);
+
+                if(startprocess == (int)Constants.ProcessOpperationResults.FailedStart)
+                {
+                    Task.Run(() =>
+                    {
+                        MessageBox.Show(Constants.ProcessFailedToStart);
+                    });
+                }
+            }          
         }
 
 
@@ -161,6 +172,21 @@ namespace BetterReign
         {
 
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_FileDirectory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
@@ -170,8 +196,11 @@ namespace BetterReign
 /// </summary>
 public class TargetProcess
 {
-    public int ProcessId { get; set; }
-    public string ProcessName { get; set; }
+    private int processId;
+    private string processName;
+
+    public int ProcessId { get => processId; set => processId = value; }
+    public string ProcessName { get => processName; set => processName = value; }
     public int? ProcessVersion { get; set; }
 
 

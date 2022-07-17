@@ -31,6 +31,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label_FileSignature = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label_FileSizeMb = new System.Windows.Forms.Label();
             this.label_FileDirectory = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -73,7 +75,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(695, 225);
+            this.tabControl1.Size = new System.Drawing.Size(575, 252);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -83,26 +85,50 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(687, 197);
+            this.tabPage1.Size = new System.Drawing.Size(567, 224);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label_FileSignature);
+            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label_FileSizeMb);
             this.groupBox2.Controls.Add(this.label_FileDirectory);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(327, 3);
+            this.groupBox2.Location = new System.Drawing.Point(6, 140);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(356, 188);
+            this.groupBox2.Size = new System.Drawing.Size(558, 76);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "File";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // label_FileSignature
+            // 
+            this.label_FileSignature.AutoSize = true;
+            this.label_FileSignature.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_FileSignature.Location = new System.Drawing.Point(69, 53);
+            this.label_FileSignature.Name = "label_FileSignature";
+            this.label_FileSignature.Size = new System.Drawing.Size(20, 15);
+            this.label_FileSignature.TabIndex = 10;
+            this.label_FileSignature.Text = "na";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Calibri Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(6, 53);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 14);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Signature: ";
             // 
             // label_FileSizeMb
             // 
@@ -123,6 +149,7 @@
             this.label_FileDirectory.Size = new System.Drawing.Size(20, 15);
             this.label_FileDirectory.TabIndex = 7;
             this.label_FileDirectory.Text = "na";
+            this.label_FileDirectory.Click += new System.EventHandler(this.label_FileDirectory_Click);
             // 
             // label9
             // 
@@ -146,8 +173,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.label_ProcessPriority);
             this.groupBox1.Controls.Add(this.label8);
@@ -164,18 +190,19 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label_ProcessMemoryUsage);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Location = new System.Drawing.Point(6, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(318, 188);
+            this.groupBox1.Size = new System.Drawing.Size(558, 130);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label_ProcessPriority
             // 
             this.label_ProcessPriority.AutoSize = true;
             this.label_ProcessPriority.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_ProcessPriority.Location = new System.Drawing.Point(120, 111);
+            this.label_ProcessPriority.Location = new System.Drawing.Point(120, 108);
             this.label_ProcessPriority.Name = "label_ProcessPriority";
             this.label_ProcessPriority.Size = new System.Drawing.Size(20, 15);
             this.label_ProcessPriority.TabIndex = 15;
@@ -317,7 +344,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(687, 197);
+            this.tabPage2.Size = new System.Drawing.Size(567, 224);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ragnar";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -328,7 +355,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(701, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(581, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -343,7 +370,7 @@
             // menuitem_File_SelectFile
             // 
             this.menuitem_File_SelectFile.Name = "menuitem_File_SelectFile";
-            this.menuitem_File_SelectFile.Size = new System.Drawing.Size(180, 22);
+            this.menuitem_File_SelectFile.Size = new System.Drawing.Size(136, 22);
             this.menuitem_File_SelectFile.Text = "Select file ...";
             this.menuitem_File_SelectFile.Click += new System.EventHandler(this.menuitem_File_SelectFile_Click);
             // 
@@ -351,7 +378,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(701, 257);
+            this.ClientSize = new System.Drawing.Size(581, 282);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -401,5 +428,7 @@
         private Label label_FileDirectory;
         private Label label9;
         private Label label2;
+        private Label label10;
+        private Label label_FileSignature;
     }
 }
