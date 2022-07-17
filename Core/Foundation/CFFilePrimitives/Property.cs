@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,7 +21,7 @@ namespace BetterReign.Core.Foundation.CFFilePrimitives
             
             if(length.HasValue)
             {               
-                return length.ToString();
+                return length.ToString() + " Mb";
             }
             else
             {
@@ -35,7 +36,7 @@ namespace BetterReign.Core.Foundation.CFFilePrimitives
         /// 
         /// </summary>
         /// <param name="file">target file.</param>
-        /// <returns>Working directory path,</returns>
+        /// <returns>Working directory path.</returns>
         public string GetWorkingDirectory(string file)
         {
             var information = new FileInfo(file);
@@ -51,6 +52,24 @@ namespace BetterReign.Core.Foundation.CFFilePrimitives
             }
 
             return RanToEnd;
+        }
+
+
+        /// <summary>
+        /// Calculates and md5 checksum of file.
+        /// </summary>
+        /// <param name="file">target file.</param>
+        /// <returns>md5 signature as a string.</returns>
+        public string GetMd5Hash(string file)
+        {
+            using (var md5 = MD5.Create())
+            {
+                using (var stream = File.OpenRead(file))
+                {
+                    var v = md5.ComputeHash(stream);
+                    return BitConverter.ToString(v).Replace("-", "").ToLowerInvariant();
+                }
+            }
         }
     }
 }
