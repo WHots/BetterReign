@@ -16,6 +16,9 @@ namespace BetterReign
         /// Targeted file to monitor.
         /// </summary>
         private string TargetFile = string.Empty;
+        /// <remarks>
+        /// <see cref="ProcessExited(object, EventArgs)"/> 
+        /// </remarks>
         private bool ProcessIsRunning = false;
         
 
@@ -40,8 +43,11 @@ namespace BetterReign
         /// <summary>
         /// Builds process & runs it.
         /// </summary>
-        /// <param name="file"></param>
+        /// <param name="file">Target file to run.</param>
         /// <returns></returns>
+        /// <remarks>
+        /// <see cref="TargetFile"/> Object build.
+        /// </remarks>
         private int StartProcess(string file)
         {        
             var userStartedProcess = new Process();
@@ -67,6 +73,14 @@ namespace BetterReign
         }
 
 
+        /// <summary>
+        /// Captures process information.
+        /// </summary>
+        /// <param name="process">Selected process Object.</param>
+        /// <remarks>
+        /// <see cref="TargetProcess"/> For object class.
+        /// <see cref="StartProcess"/> For usage.
+        /// </remarks>
         private void CaptureGeneralProcessInformation(TargetProcess process)
         {             
             BackgroundWork.ControlInvoke(label_ProcessStartArugments, () => label_ProcessStartArugments.Text = processGeneralInformation.GetProcessArguments(process.ProcessId));          
@@ -86,6 +100,11 @@ namespace BetterReign
         }
 
 
+        /// <summary>
+        /// Selects file to gather information on.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuitem_File_SelectFile_Click(object sender, EventArgs e)
         {
             string file = string.Empty;
@@ -122,12 +141,6 @@ namespace BetterReign
                     });
                 }
             }          
-        }
-
-
-        private void label_ProcessDirectory_TextChanged(object sender, EventArgs e)
-        {
-            
         }
 
 
